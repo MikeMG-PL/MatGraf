@@ -25,6 +25,6 @@ struct Vector
 	Vector cross(Vector v) const;			// Cross product of this x v
 	Vector normalized();					// Normalize, returns vector of length 1
 	float magnitude();						// Returns magnitude, length of the vector
-	float angle(Vector v);					// Returns angle between this vector and the passed vector - IN DEGREES
+	float angle(Vector v);					// Returns angle between this vector and the passed vector - IN RADIANS
 	
 };
