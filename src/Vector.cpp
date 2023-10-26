@@ -1,5 +1,6 @@
 #include "Vector.h"
 #define PI 3.14159265f
+#include <sstream>
 #include "MathHelpers.h"
 
 std::string Vector::toString()
