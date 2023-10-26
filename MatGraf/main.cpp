@@ -12,7 +12,7 @@ int main()
 
     Vector a(0, 3, 0), b(5, 5, 0);
     if(floatNearlyEqual(a.angle(b) * 180 / PI, 45))
-		std::cout << "[SUCCESS] Angle between " << a.toString() << " and " << b.toString() << " equals expected value (90 degrees)." << std::endl;
+		std::cout << "[SUCCESS] Angle between " << a.toString() << " and " << b.toString() << " equals expected value (45 degrees)." << std::endl;
     else std::cout << "[ASSERTION FAILED]" << std::endl;
 
     Vector c(4, 5, 1), d(4, 1, 3);
