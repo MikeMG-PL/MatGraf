@@ -40,10 +40,23 @@ unsigned Matrix::GetVectorSize() const
 	return rows * columns;
 }
 
+std::string Matrix::toString()
+{
+	std::string result;
 
-// std::string Matrix::toString()
-// {
-// }
+	for (unsigned int i = 0; i < rows; ++i)
+	{
+		for (unsigned int k = 0; k < columns; ++k)
+		{
+			result += std::to_string(GetAt(i, k));
+			result += " ";
+		}
+
+		result += "\n";
+	}
+
+	return result;
+}
 
 Matrix Matrix::operator+(const Matrix& m) const
 {
@@ -78,7 +91,7 @@ Matrix Matrix::operator-(const Matrix& m) const
 bool Matrix::operator==(const Matrix& m)
 {
 	if (GetVectorSize() != m.GetVectorSize())
-		throw std::invalid_argument("Invalid matrix dimensions");
+		return false;
 
 	bool equal;
 
@@ -107,23 +120,26 @@ Matrix Matrix::operator*(float f) const
 
 Matrix Matrix::operator*(const Matrix& m) const
 {
-	if (GetRows() != m.GetColumns())
-		throw std::invalid_argument("Invalid matrix dimensions");
-
-	Matrix result(GetRows(), m.GetColumns());
-
-	for (unsigned int i = 0; i < GetRows(); i++) {
-		for (unsigned int j = 0; j < m.GetColumns(); j++) {
-			float sum = 0.0;
-			for (unsigned int k = 0; k < GetColumns(); k++) {
-				sum += GetAt(i, k) * m.GetAt(k, j);
+	if (GetColumns() == m.GetRows())
+	{
+		Matrix result(GetRows(), m.GetColumns());
+		for (int i = 0; i < GetRows(); i++)
+		{
+			for (int j = 0; j < m.GetColumns(); j++)
+			{
+				float s = 0.0f;
+				for (int o = 0; o < GetColumns(); o++)
+				{
+					s += GetAt(i, o) * m.GetAt(o, j);
+				}
+				result.SetAt(s, i, j);
 			}
-			result.SetAt(sum, i, j);
 		}
+		return result;
 	}
-
-	return result;
+	throw std::invalid_argument("Invalid matrix dimensions");
 }
+
 
 Matrix Matrix::operator!()
 {
@@ -156,15 +172,11 @@ Matrix Matrix::inverse() const
 
 Matrix Matrix::identity() const
 {
-	if (GetRows() != GetColumns())
-		throw std::invalid_argument("Invalid matrix dimensions");
+	unsigned int biggerDimension = GetRows() > GetColumns() ? GetRows() : GetColumns();
 
-	Matrix id(GetRows(), GetColumns());
+	Matrix id(biggerDimension, biggerDimension);
 
-	for(int i = 0; i < GetVectorSize(); i++)
-		id.Set(0, i);
-
-	for (int i = 0; i < GetRows(); i++)
+	for (int i = 0; i < biggerDimension; i++)
 		id.SetAt(1, i, i);
 
 	return id;
