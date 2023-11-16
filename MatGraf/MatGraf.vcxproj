@@ -130,11 +130,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\MathHelpers.cpp" />
+    <ClCompile Include="..\src\Matrix.cpp" />
     <ClCompile Include="..\src\Vector.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\MathHelpers.h" />
+    <ClInclude Include="..\include\Matrix.h" />
     <ClInclude Include="..\include\Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
