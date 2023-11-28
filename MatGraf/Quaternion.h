@@ -1,0 +1,23 @@
+#pragma once
+
+#include <iostream>
+
+class Quaternion
+{
+public:
+    Quaternion(float x, float y, float z, float w);
+
+    float x; // X component of the Quaternion
+    
+    float y; // Y component of the Quaternion
+    
+    float z; // Z component of the Quaternion
+    
+    float w; // W component of the Quaternion
+
+    float& operator[](int index);
+
+    Quaternion operator *(const Quaternion& q) const;
+
+    std::string toString() const;
+};
