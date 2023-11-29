@@ -2,6 +2,8 @@
 #include <complex.h>
 #include <sstream>
 
+#include "Vector.h"
+
 Quaternion::Quaternion(float x, float y, float z, float w) : x(x), y(y), z(z), w(w)
 {
 }
@@ -21,13 +23,57 @@ float& Quaternion::operator[](int index)
 
 Quaternion Quaternion::operator*(const Quaternion& q) const
 {
-    return Quaternion(
-        // This is wrong
+    /*return {
         this->w * q.x + this->x * q.w + this->y * q.z - this->z * q.y,
         this->w * q.y + this->y * q.w + this->z * q.x - this->x * q.z,
         this->w * q.z + this->z * q.w + this->x * q.y - this->y * q.x,
         this->w * q.w - this->x * q.x - this->y * q.y - this->z * q.z
-    );
+    };*/
+
+    const auto first_vector = Vector(this->x, this->y, this->z);
+    const auto second_vector = Vector(q.x, q.y, q.z);
+
+    float result_w = this->w * q.w - Vector(first_vector).dot(second_vector);
+    Vector result_vector = second_vector * this->w + first_vector * q.w + first_vector.cross(second_vector);
+
+    return { result_vector.x, result_vector.y, result_vector.z, result_w };
+}
+
+Quaternion Quaternion::operator/(const Quaternion& q) const
+{
+    const auto first_vector = Vector(this->x, this->y, this->z);
+    const auto second_vector = Vector(q.x, q.y, q.z);
+
+    const float divided_by = q.w * q.w + second_vector.dot(second_vector);
+    float result_w = (this->w * q.w + Vector(first_vector).dot(second_vector)) / (divided_by);
+    Vector result_vector = (second_vector * -this->w + first_vector * q.w - first_vector.cross(second_vector)) * (1.0f / (divided_by));
+
+    return { result_vector.x, result_vector.y, result_vector.z, result_w };
+}
+
+Quaternion Quaternion::operator+(const Quaternion& q) const
+{
+    return {
+        this->x + q.x,
+        this->y + q.y,
+        this->z + q.z,
+        this->w + q.w
+    };
+}
+
+Quaternion Quaternion::operator-(const Quaternion& q) const
+{
+    return {
+        this->x - q.x,
+        this->y - q.y,
+        this->z - q.z,
+        this->w - q.w
+    };
+}
+
+bool Quaternion::operator==(const Quaternion& q) const
+{
+    return this->w == q.w && this->x == q.x && this->y == q.y && this->z == q.z;
 }
 
 std::string Quaternion::toString() const

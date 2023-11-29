@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "Vector.h"
+
 class Quaternion
 {
 public:
@@ -18,6 +20,10 @@ public:
     float& operator[](int index);
 
     Quaternion operator *(const Quaternion& q) const;
+    Quaternion operator +(const Quaternion& q) const;
+    Quaternion operator -(const Quaternion& q) const;
+    Quaternion operator /(const Quaternion& q) const;
+    bool operator==(const Quaternion& q) const;
 
     std::string toString() const;
 };
