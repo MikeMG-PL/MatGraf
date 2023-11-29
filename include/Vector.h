@@ -12,7 +12,7 @@ struct Vector
 
 	float x, y, z;
 
-	std::string toString();
+	std::string toString() const;
 	Vector operator +(const Vector& v) const;
 	Vector operator -(const Vector& v) const;
 	bool operator ==(const Vector& v);
@@ -22,8 +22,8 @@ struct Vector
 	Vector negative() const;				// Negation, way #2
 	float dot(Vector v) const;		 		// Dot product
 	Vector cross(Vector v) const;			// Cross product of this x v
-	Vector normalized();					// Normalize, returns vector of length 1
-	float magnitude();						// Returns magnitude, length of the vector
-	float angle(Vector v);					// Returns angle between this vector and the passed vector - IN RADIANS
+	Vector normalized() const;					// Normalize, returns vector of length 1
+	float magnitude() const;						// Returns magnitude, length of the vector
+	float angle(Vector v) const;					// Returns angle between this vector and the passed vector - IN RADIANS
 	
 };

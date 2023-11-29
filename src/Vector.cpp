@@ -3,7 +3,7 @@
 #include <sstream>
 #include "MathHelpers.h"
 
-std::string Vector::toString()
+std::string Vector::toString() const
 {
 	std::stringstream s;
 	s << "[" << x << ", " << y << ", " << z << "]";
@@ -55,18 +55,18 @@ Vector Vector::cross(Vector v) const
 	return { y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x };
 }
 
-Vector Vector::normalized()
+Vector Vector::normalized() const
 {
 	Vector vector = { x, y, z };
 	return vector / magnitude();
 }
 
-float Vector::magnitude()
+float Vector::magnitude() const
 {
 	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 }
 
-float Vector::angle(Vector v)
+float Vector::angle(Vector v) const
 {
 	return acos(dot(v) / (magnitude() * v.magnitude()));
 }

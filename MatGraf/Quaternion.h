@@ -25,5 +25,7 @@ public:
     Quaternion operator /(const Quaternion& q) const;
     bool operator==(const Quaternion& q) const;
 
+    static Vector rotate(const Vector& point, const Vector& axis, float angle);
+
     std::string toString() const;
 };

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Quaternion.h"
+#define PI 3.14159265f
 
 int main()
 {
@@ -50,6 +51,17 @@ int main()
 	// Quaternion division
 	{
 	    std::cout << "q1 / q2" << "\n";
-		std::cout << "Result: " << (quaternion1 / quaternion2).toString();
+		std::cout << "Result: " << (quaternion1 / quaternion2).toString() << "\n";
+	}
+
+	std::cout << std::endl;
+
+	// Rotate
+	{
+		const Vector point = { -1.0f, -1.0f, -1.0f };
+        const Vector axis = { 1.0f, 0.0f, 0.0f };
+        const float angle = 270.0f;
+	    std::cout << "Rotate " << point.toString() << " by " << angle << " degrees." << "\n";
+		std::cout << Quaternion::rotate(point, axis, angle * PI / 180.0f).toString() << "\n";
 	}
 }
