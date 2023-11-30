@@ -62,6 +62,6 @@ int main()
         const Vector axis = { 1.0f, 0.0f, 0.0f };
         const float angle = 270.0f;
 	    std::cout << "Rotate " << point.toString() << " by " << angle << " degrees." << "\n";
-		std::cout << Quaternion::rotate(point, axis, angle * PI / 180.0f).toString() << "\n";
+		std::cout << "Result: " << Quaternion::rotate(point, axis, angle * PI / 180.0f).toString() << "\n";
 	}
 }

@@ -93,11 +93,11 @@ std::string Quaternion::toString() const
     std::stringstream s{};
     s << "(";
     s << x;
-    s << ", ";
+    s << "i, ";
     s << y;
-    s << ", ";
+    s << "j, ";
     s << z;
-    s << ", ";
+    s << "k, ";
     s << w;
     s << ")";
     return s.str();
