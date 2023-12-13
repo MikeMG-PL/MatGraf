@@ -40,11 +40,22 @@ inline float angleBetween(Line l1, Line l2)
 	return v1.angle(v2);
 }
 
-// inline Vector intersection(Line l, Plane p)
-// {
-//
-// }
-//
+inline Vector intersection(Line l, Plane p)
+{
+	Vector n = p.normal;
+	Vector p0 = l.p;
+	Vector q0 = p.p;
+	Vector v = l.v;
+
+	float t = - n.dot(p0 - q0) / n.dot(v);
+	Vector P = p0 + v * t;
+
+	if (n.dot(P - q0) == 0)
+		return P;
+
+	return Vector::invalid();
+}
+
 // inline float angleBetween(Line l, Plane p)
 // {
 // 	

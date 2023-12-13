@@ -12,6 +12,6 @@ struct Line
 	{
 	}
 
-	Vector p;
-	Vector v;
+	Vector p = Vector(0,0,0);
+	Vector v = Vector(0, 0, 0);
 };
