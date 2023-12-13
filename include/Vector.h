@@ -25,5 +25,6 @@ struct Vector
 	Vector normalized() const;					// Normalize, returns vector of length 1
 	float magnitude() const;						// Returns magnitude, length of the vector
 	float angle(Vector v) const;					// Returns angle between this vector and the passed vector - IN RADIANS
+	static Vector invalid();						// Marks this vector as invalid if you need
 	
 };

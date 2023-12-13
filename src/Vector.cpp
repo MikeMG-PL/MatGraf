@@ -2,9 +2,13 @@
 #define PI 3.14159265f
 #include <sstream>
 #include "MathHelpers.h"
+#include <cmath>
 
 std::string Vector::toString() const
 {
+	if (x == NAN || y == NAN || z == NAN)
+		return "invalid vector";
+
 	std::stringstream s;
 	s << "[" << x << ", " << y << ", " << z << "]";
 	return s.str();
@@ -69,4 +73,9 @@ float Vector::magnitude() const
 float Vector::angle(Vector v) const
 {
 	return acos(dot(v) / (magnitude() * v.magnitude()));
+}
+
+Vector Vector::invalid()
+{
+	return {NAN, NAN, NAN};
 }
