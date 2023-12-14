@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#define PI 3.14159265f
 #include "Line.h"
 #include "Plane.h"
 #include "Vector.h"
@@ -56,11 +56,21 @@ inline Vector intersection(Line l, Plane p)
 	return Vector::invalid();
 }
 
-// inline float angleBetween(Line l, Plane p)
-// {
-// 	
-// }
-//
+inline float angleBetween(Line l, Plane p)
+{
+	const Vector n = p.normal;
+	const Vector v = l.v;
+	const float angleDeg = v.angle(n) * 180 / PI;
+	float result = 0;
+
+	if (angleDeg > 90)
+		result = angleDeg - 90;
+	else
+		result = 90 - angleDeg;
+
+	return result;
+}
+
 // inline Line intersection(Plane p1, Plane p2)
 // {
 // 	

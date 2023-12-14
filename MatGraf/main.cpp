@@ -2,7 +2,6 @@
 
 #include "Line.h"
 #include "MathHelpers.h"
-#define PI 3.14159265f
 
 int main()
 {
@@ -26,6 +25,8 @@ int main()
 		Vector v = intersection(l1, p);
 
 		std::cout << v.toString() << std::endl;
+
+		std::cout << angleBetween(l1, p) << std::endl;
 	}
 
 }
