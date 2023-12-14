@@ -2,6 +2,7 @@
 
 #include "Line.h"
 #include "MathHelpers.h"
+#include "Sphere.h"
 
 int main()
 {
@@ -29,4 +30,15 @@ int main()
 		std::cout << angleBetween(l1, p) << std::endl;
 	}
 
+	{
+	    Sphere s({0.0f, 0.0f, 0.0f}, sqrt(26.0f));
+		Line l({3, -1, 2}, {2, 4, -6});
+
+		auto result = intersection(s, l);
+
+	    if (result.first.toString() == Vector::invalid().toString())
+			std::cout << "No intersections between the sphere and the line." << std::endl;
+		else
+		    std::cout << "Intersections at: " << result.first.toString() << ", " << result.second.toString() << std::endl;
+	}
 }

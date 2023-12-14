@@ -134,6 +134,7 @@
     <ClCompile Include="..\src\Line.cpp" />
     <ClCompile Include="..\src\Matrix.cpp" />
     <ClCompile Include="..\src\Plane.cpp" />
+    <ClCompile Include="..\src\Sphere.cpp" />
     <ClCompile Include="..\src\Vector.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Quaternion.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="..\include\MathHelpers.h" />
     <ClInclude Include="..\include\Matrix.h" />
     <ClInclude Include="..\include\Plane.h" />
+    <ClInclude Include="..\include\Sphere.h" />
     <ClInclude Include="..\include\Vector.h" />
     <ClInclude Include="Quaternion.h" />
   </ItemGroup>

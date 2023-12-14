@@ -4,6 +4,7 @@
 #include "Line.h"
 #include "Plane.h"
 #include "Vector.h"
+#include "Sphere.h"
 
 enum Axis
 {
@@ -69,6 +70,26 @@ inline float angleBetween(Line l, Plane p)
 		result = 90 - angleDeg;
 
 	return result;
+}
+
+inline std::pair<Vector, Vector> intersection(Sphere s, Line l)
+{
+	float a = l.v.dot(l.v);
+	float b = 2.0f * l.v.dot((l.p - s.point));
+	float c = (l.p - s.point).dot(l.p - s.point) - (s.radius * s.radius);
+
+	float delta = b * b - 4.0f * a * c;
+
+	if (delta < 0)
+	    return std::make_pair(Vector::invalid(), Vector::invalid());
+
+	float t1 = (-b + sqrt(delta)) / (2.0f * a);
+	float t2 = (-b - sqrt(delta)) / (2.0f * a);
+
+	Vector p1 = l.p + l.v * t1;
+	Vector p2 = l.p + l.v * t2;
+
+    return std::make_pair<Vector, Vector>(Vector(p1), Vector(p2));
 }
 
 // inline Line intersection(Plane p1, Plane p2)
