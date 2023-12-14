@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Line.cpp" />
+    <ClCompile Include="..\src\LineSegment.cpp" />
     <ClCompile Include="..\src\Matrix.cpp" />
     <ClCompile Include="..\src\Plane.cpp" />
     <ClCompile Include="..\src\Sphere.cpp" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Line.h" />
+    <ClInclude Include="..\include\LineSegment.h" />
     <ClInclude Include="..\include\MathHelpers.h" />
     <ClInclude Include="..\include\Matrix.h" />
     <ClInclude Include="..\include\Plane.h" />

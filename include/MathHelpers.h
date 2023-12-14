@@ -2,6 +2,7 @@
 #include <iostream>
 #define PI 3.14159265f
 #include "Line.h"
+#include "LineSegment.h"
 #include "Plane.h"
 #include "Vector.h"
 #include "Sphere.h"
@@ -90,6 +91,25 @@ inline std::pair<Vector, Vector> intersection(Sphere s, Line l)
 	Vector p2 = l.p + l.v * t2;
 
     return std::make_pair<Vector, Vector>(Vector(p1), Vector(p2));
+}
+
+inline Vector intersection(LineSegment l1, LineSegment l2)
+{
+    const Vector p1 = l1.p;
+	const Vector p2 = l2.p;
+	const Vector v1 = l1.v;
+	const Vector v2 = l2.v;
+
+	const float t1 = (((p2 - p1).cross(v2)).dot(v1.cross(v2))) / std::pow((v1.cross(v2)).magnitude(), 2);
+	const float t2 = -(((p2 - p1).cross(v1)).dot(v2.cross(v1))) / std::pow((v2.cross(v1)).magnitude(), 2);
+
+	if (t1 < 0 || t1 > 1 || t2 < 0 || t2 > 1)
+	    return Vector::invalid();
+
+	if (p1 + v1 * t1 == p2 + v2 * t2)
+	    return p1 + v1 * t1;
+
+	return Vector::invalid();
 }
 
 // inline Line intersection(Plane p1, Plane p2)

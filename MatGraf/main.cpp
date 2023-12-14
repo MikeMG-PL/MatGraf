@@ -41,4 +41,16 @@ int main()
 		else
 		    std::cout << "Intersections at: " << result.first.toString() << ", " << result.second.toString() << std::endl;
 	}
+
+	{
+	    LineSegment l1({5,5,4}, {5,5,2});
+		LineSegment l2({5,5,5}, {5,5,-2});
+
+		auto result = intersection(l1, l2);
+
+	    if (result.toString() == Vector::invalid().toString())
+			std::cout << "No intersections between the two line segments." << std::endl;
+		else
+		    std::cout << result.toString() << std::endl;
+	}
 }
