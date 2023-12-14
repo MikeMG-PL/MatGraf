@@ -3,6 +3,7 @@
 
 struct Line
 {
+public:
 	// static Line makeLineFromPoints(Vector v1, Vector v2);
 
 	// p, v or x0y0z0, ABC
