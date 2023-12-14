@@ -47,7 +47,7 @@ inline Vector intersection(Line l, Plane p)
 	Vector q0 = p.p;
 	Vector v = l.v;
 
-	float t = - n.dot(p0 - q0) / n.dot(v);
+	float t = -n.dot(p0 - q0) / n.dot(v);
 	Vector P = p0 + v * t;
 
 	if (n.dot(P - q0) == 0)
@@ -71,11 +71,19 @@ inline float angleBetween(Line l, Plane p)
 	return result;
 }
 
-// inline Line intersection(Plane p1, Plane p2)
-// {
-// 	
-// }
-//
+inline Line intersection(Plane p1, Plane p2)
+{
+	if (floatNearlyEqual(p1.normal.angle(p2.normal), 0) && p1.p == p2.p)
+	{
+		Line l(p1.p, p1.normal.cross({ 0,0,1 }));
+		return l;
+	}
+	else
+	{
+		// ...
+	}
+}
+
 // inline float angleBetween(Plane p1, Plane p2)
 // {
 // 	
