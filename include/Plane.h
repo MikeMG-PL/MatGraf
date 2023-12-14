@@ -9,4 +9,5 @@ struct Plane
 
 	Vector p = Vector(0, 0, 0);
 	Vector normal = Vector(0, 0, 0);
+	float d = 0;
 };

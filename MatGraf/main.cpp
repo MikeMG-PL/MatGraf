@@ -13,9 +13,6 @@ int main()
 		Vector v = intersection(l1, l2);
 		std::cout << v.toString() << std::endl;
 
-		if (v.toString() == Vector::invalid().toString())
-			std::cout << "No intersections between those lines." << std::endl;
-
 		std::cout << angleBetween(l1, l2) * 180.0f / PI << std::endl;
 	}
 
@@ -52,5 +49,16 @@ int main()
 			std::cout << "No intersections between the two line segments." << std::endl;
 		else
 		    std::cout << result.toString() << std::endl;
+	}
+
+	{
+		Plane p1(2, -1, 1, -8);
+		Plane p2(4, 3, 1, 14);
+
+		Line result = intersection(p1, p2);
+
+		std::cout << "P: " << result.p.toString() << ", V: " << result.v.toString() << std::endl;
+
+		std::cout << angleBetween(p1, p2) * 180 / PI << std::endl;
 	}
 }
