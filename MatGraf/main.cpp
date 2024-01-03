@@ -20,7 +20,7 @@ int main()
     Renderer::cubes.emplace_back(cube);
 
     float flow = -10000.0f;
-    float rotation = 15.0f;
+    float rotation = 1.0f;
     bool once = true;
     while (true)
     {
@@ -36,9 +36,10 @@ int main()
             for (auto& cube : Renderer::cubes)
             {
                 cube.rotate(rotation, Vector(0.0f, 1.0f, 0.0f));
-                once = false;
                 //cube.rotate(rotation, Vector(1.0f, 0.0f, 0.0f));
+                //cube.rotate(rotation, Vector(0.0f, 0.0f, 1.0f));
                 //cube.center = Vector(sin(flow), sin(flow), 0.0f);
+                once = false;
             }
         }
 

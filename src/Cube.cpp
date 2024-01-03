@@ -67,12 +67,12 @@ bool Cube::intersects(Line line) const
 
         if (t >= 0.0f)
         {
-            constexpr float epsilon = 0.0f;
+            constexpr float epsilon = 0.0f; // Doesn't really fix the issue
             const Vector intersection = P + V * t;
 
-            if (intersection.x >= -width - epsilon && intersection.x <= width + epsilon &&
-                intersection.y >= -height - epsilon && intersection.y <= height + epsilon &&
-                intersection.z >= -depth - epsilon && intersection.z <= depth + epsilon)
+            if (intersection.x >= -halfWidth - epsilon && intersection.x <= halfWidth + epsilon &&
+                intersection.y >= -halfHeight - epsilon && intersection.y <= halfHeight + epsilon &&
+                intersection.z >= -halfDepth - epsilon && intersection.z <= halfDepth + epsilon)
             {
                /* streak += 1;
 
