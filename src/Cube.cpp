@@ -70,22 +70,12 @@ bool Cube::intersects(Line line) const
             constexpr float epsilon = 0.0f; // Doesn't really fix the issue
             const Vector intersection = P + V * t;
 
-            if (intersection.x >= -halfWidth - epsilon && intersection.x <= halfWidth + epsilon &&
-                intersection.y >= -halfHeight - epsilon && intersection.y <= halfHeight + epsilon &&
-                intersection.z >= -halfDepth - epsilon && intersection.z <= halfDepth + epsilon)
+            if (std::abs(intersection.x - center.x) <= halfWidth + epsilon &&
+                std::abs(intersection.y - center.y) <= halfHeight + epsilon &&
+                std::abs(intersection.z - center.z) <= halfDepth + epsilon)
             {
-               /* streak += 1;
-
-                if (streak >= 3)
-                    std::cout << "TRUE " << streak << " Intersection point: " << intersection.toString() << "\n";*/
-
                 return true;
             }
-           /* else
-            {
-                if (streak >= 3)
-                    std::cout << "FALSE Intersection point: " << intersection.toString() << "\n";
-            }*/
         }
     }
 
@@ -122,6 +112,6 @@ void Cube::rotate(float angle, Vector axis)
     for (auto& face : faces)
     {
         face.p = extendedRotation * (face.p - center) + center;
-        face.normal = extendedRotation * face.normal;
+        face.normal = (extendedRotation.inverse().transpose() * face.normal).normalized();
     }
 }

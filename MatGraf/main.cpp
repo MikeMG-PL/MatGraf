@@ -8,7 +8,7 @@
 int main()
 {
     // Initially fill with dots
-    clearBuffer();
+    Renderer::clearBuffer();
 
     //Plane p(Vector(0, 0, 1), Vector(1, 4, 1));
 
@@ -16,7 +16,7 @@ int main()
     //Sphere sphere1(Vector(0.0f, 0.0f, 0.0f), 0.5f);
     //Renderer::spheres.emplace_back(sphere1);
 
-    Cube cube(Vector(0.0f, 0.0f, 0.0f), 1.0f, 1.0f, 1.0f);
+    Cube cube(Vector(0.0f, 0.0f, 0.0f), 0.5f, 0.5f, 0.5f);
     Renderer::cubes.emplace_back(cube);
 
     float flow = -10000.0f;
@@ -24,6 +24,12 @@ int main()
     bool once = true;
     while (true)
     {
+        // Check if high-order bit is set (1 << 15)
+        if (GetKeyState('A') & 0x8000)
+        {
+            Renderer::cameraPos.y += 0.01f;
+        }
+
         flow += 0.01f;
         //rotation += 0.0001f;
         for (auto& sphere : Renderer::spheres)
@@ -43,6 +49,6 @@ int main()
             }
         }
 
-        render();
+        Renderer::render();
     }
 }
