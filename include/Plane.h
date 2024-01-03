@@ -3,6 +3,7 @@
 
 struct Plane
 {
+	Plane() = default;
 	// Plane and normal
 	Plane(const Vector& p, const Vector& normal);
 	Plane(float a, float b, float c, float d);

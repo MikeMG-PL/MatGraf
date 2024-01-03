@@ -16,6 +16,11 @@ enum Axis
 
 inline bool floatNearlyEqual(float d1, float d2, float tolerance = 0.000001f)
 {
+	if (d1 != d1 || d2 != d2)
+	{
+	    return d1 != d1 && d2 != d2;
+	}
+
 	return (std::abs(d1 - d2) < tolerance);
 }
 
@@ -52,7 +57,7 @@ inline Vector intersection(Line l, Plane p)
 	float t = -n.dot(p0 - q0) / n.dot(v);
 	Vector P = p0 + v * t;
 
-	if (n.dot(P - q0) == 0)
+	if (floatNearlyEqual(n.dot(P - q0), 0.0f))
 		return P;
 
 	return Vector::invalid();

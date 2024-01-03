@@ -137,6 +137,7 @@
     <ClCompile Include="..\src\Plane.cpp" />
     <ClCompile Include="..\src\Sphere.cpp" />
     <ClCompile Include="..\src\Vector.cpp" />
+    <ClCompile Include="..\src\Cube.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Quaternion.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="..\include\Renderer.h" />
     <ClInclude Include="..\include\Sphere.h" />
     <ClInclude Include="..\include\Vector.h" />
+    <ClInclude Include="..\include\Cube.h" />
     <ClInclude Include="Quaternion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

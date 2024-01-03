@@ -33,6 +33,7 @@ struct Matrix
 	bool operator ==(const Matrix& m);
 	Matrix operator *(float f) const;
 	Matrix operator *(const Matrix& m) const;
+    Vector operator *(const Vector& v) const;
 	Matrix operator !();											// Inverse matrix, way #1, requires square matrix
 	Matrix inverse() const;											// Inverse matrix, way #2, requires square matrix
 	Matrix identity() const;										// Requires square matrix
@@ -45,6 +46,13 @@ struct Matrix
 	Matrix translate(const Vector& vector);
 	Matrix rotate(Axis axis, float angle);							// In RADIANS
 	Matrix scale(const Vector& vector);
+
+    static Matrix extend(const Matrix& matrix);
+    Matrix getRotationPart() const;
+
+    static Matrix rotationX(float angle);
+    static Matrix rotationY(float angle);
+    static Matrix rotationZ(float angle);
 
 private:
 
