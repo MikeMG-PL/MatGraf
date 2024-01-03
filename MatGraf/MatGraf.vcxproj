@@ -146,6 +146,7 @@
     <ClInclude Include="..\include\MathHelpers.h" />
     <ClInclude Include="..\include\Matrix.h" />
     <ClInclude Include="..\include\Plane.h" />
+    <ClInclude Include="..\include\Renderer.h" />
     <ClInclude Include="..\include\Sphere.h" />
     <ClInclude Include="..\include\Vector.h" />
     <ClInclude Include="Quaternion.h" />
