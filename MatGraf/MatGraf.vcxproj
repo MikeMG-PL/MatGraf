@@ -135,11 +135,11 @@
     <ClCompile Include="..\src\LineSegment.cpp" />
     <ClCompile Include="..\src\Matrix.cpp" />
     <ClCompile Include="..\src\Plane.cpp" />
+    <ClCompile Include="..\src\Quaternion.cpp" />
     <ClCompile Include="..\src\Sphere.cpp" />
     <ClCompile Include="..\src\Vector.cpp" />
     <ClCompile Include="..\src\Cube.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Quaternion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Line.h" />
@@ -147,11 +147,11 @@
     <ClInclude Include="..\include\MathHelpers.h" />
     <ClInclude Include="..\include\Matrix.h" />
     <ClInclude Include="..\include\Plane.h" />
+    <ClInclude Include="..\include\Quaternion.h" />
     <ClInclude Include="..\include\Renderer.h" />
     <ClInclude Include="..\include\Sphere.h" />
     <ClInclude Include="..\include\Vector.h" />
     <ClInclude Include="..\include\Cube.h" />
-    <ClInclude Include="Quaternion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

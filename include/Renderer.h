@@ -38,7 +38,7 @@ static void checkForIntersections()
     float halfScreenHeight = tan(fov * 0.5f * M_PI / 180.0f);
     float halfScreenWidth = aspectRatio * halfScreenHeight;
 
-    Vector lookAtPoint = Vector(-0.25f, 0.0f, 0.0f);
+    Vector lookAtPoint = Vector(0.0f, 0.0f, 0.0f);
     Vector up = Vector(0.0f, 1.0f, 0.0f);
     Vector direction = (lookAtPoint - cameraPos).normalized();
     Vector right = direction.cross(up).normalized();

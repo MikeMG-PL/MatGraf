@@ -3,6 +3,7 @@
 #include <cassert>
 
 #include "Matrix.h"
+#include "Quaternion.h"
 
 Cube::Cube(Vector center, float width, float height, float depth) : transformMatrix(4, 4), center(center), width(width),
                                                                     height(height), depth(depth)
@@ -83,35 +84,21 @@ bool Cube::intersects(Line line) const
     return false;
 }
 
+static float prevX = 1;
+
 void Cube::rotate(float angle, Vector axis)
 {
-    Matrix rotationMatrix = Matrix(3, 3);
-
-    // Initialize the rotation matrix based on the axis
-    if (axis == Vector(1, 0, 0))
-    {
-        // Rotation around the x-axis
-        rotationMatrix = Matrix::rotationX(angle);
-    } else if (axis == Vector(0, 1, 0))
-    {
-        // Rotation around the y-axis
-        rotationMatrix = Matrix::rotationY(angle);
-    } else if (axis == Vector(0, 0, 1))
-    {
-        // Rotation around the z-axis
-        rotationMatrix = Matrix::rotationZ(angle);
-    } else
-    {
-        assert(false);
-    }
-
-    Matrix extendedRotation = Matrix::extend(rotationMatrix);
-    transformMatrix = transformMatrix * extendedRotation;
-
     // Rotate the center of each face
     for (auto& face : faces)
     {
-        face.p = extendedRotation * (face.p - center) + center;
-        face.normal = (extendedRotation.inverse().transpose() * face.normal).normalized();
+        face.p = Quaternion::rotate(face.p - center, axis, angle) + center;
+        Vector v = Quaternion::rotate(face.normal, axis, angle);
+
+        if (prevX * v.x < 0)
+            // face.p.x *= -1;
+
+            prevX = v.x;
+
+        face.normal = v;
     }
 }
